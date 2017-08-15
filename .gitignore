@@ -1,0 +1,4 @@
+*.exe
+*.nexe
+node_modules/
+index.js

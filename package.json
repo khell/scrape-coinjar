@@ -1,0 +1,23 @@
+{
+  "name": "scrape-coinjar",
+  "version": "1.0.0",
+  "description": "Scrape the CoinJar trade page.",
+  "main": "index.js",
+  "author": "Cameron Yan",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/nightmare": "^1.6.33",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "nightmare": "^2.10.0",
+    "node-notifier": "^5.1.2",
+    "nexe": "next"
+  },
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc index.ts",
+    "package": "nexe -i index.js -o ./scrape-coinjar.exe"
+  }
+}
