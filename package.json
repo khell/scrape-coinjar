@@ -11,9 +11,10 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
+    "nexe": "next",
     "nightmare": "^2.10.0",
     "node-notifier": "^5.1.2",
-    "nexe": "next"
+    "play-sound": "^1.1.1"
   },
   "scripts": {
     "start": "ts-node index.ts",

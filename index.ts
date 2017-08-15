@@ -1,5 +1,8 @@
 import * as Nightmare from 'nightmare';
 import notifier = require('node-notifier');
+import Player = require('play-sound');
+
+const player = Player({});
 
 function notifyCurrentPrice() {
     return new Nightmare({ show: false }).goto('https://www.coinjar.com/trade')
@@ -13,6 +16,10 @@ function notifyCurrentPrice() {
                     title: 'CoinJar Midpoint',
                     sound: true,
                     message: res
+                });
+
+                player.play('Morning_Flower.mp3', function(err) {
+                    console.log(err);
                 });
             }
         })
