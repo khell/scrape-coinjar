@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Current TS File",
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}/index.ts",
-            "outFiles": [
-                "${workspaceRoot}/out/**/*.js"
-            ]
+            "program": "${workspaceRoot}/node_modules/ts-node/dist/_bin.js",
+            "args": ["${relativeFile}"],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
         }
     ]
 }
