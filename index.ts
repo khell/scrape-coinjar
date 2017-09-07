@@ -58,6 +58,15 @@ const apiEndpoints: { [key: string]: () => Promise<Rates> } = {
                 } 
             }
         };
+    },
+    BTCMarkets: async () => {
+        const rates = await rp({ uri: 'https://api.btcmarkets.net/market/BTC/AUD/tick', json: true });
+        return {
+            aud: {
+                raw: rates.bestAsk,
+                formatted: colors.cyan(`$${parseFloat(rates.bestAsk).toFixed(2)}AUD`)
+            }
+        }
     }
 };
 
@@ -67,7 +76,7 @@ interface RateFormatObject {
 }
 
 interface Rates {
-    usd: RateFormatObject;
+    usd?: RateFormatObject;
     aud: RateFormatObject;
     notifier?(): void;
 }
@@ -76,7 +85,7 @@ async function notifyCurrentPrice() {
     let message = `[${moment().format('YYYY-MM-DD HH:mm:ss')}]`;
     for (const endpoint in apiEndpoints) {
         const rates = await apiEndpoints[endpoint]();
-        message += `\n${endpoint}: ${rates.usd.formatted} ${rates.aud.formatted}`;
+        message += `\n${endpoint}:${rates.usd ? ` ${rates.usd.formatted}` : ''} ${rates.aud.formatted}`;
 
         if (rates.notifier) {
             rates.notifier();
